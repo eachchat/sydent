@@ -1,0 +1,29 @@
+#
+# Step 1: Build sydent and install dependencies
+#
+FROM dockerhub.qingcloud.com/eachchat/sydentbase:3.8 as builder
+
+# Copy resources
+COPY  ["res", "/sydent/res"]
+COPY  ["scripts", "/sydent/scripts"]
+COPY  ["sydent", "/sydent/sydent"]
+COPY  ["README.rst", "setup.cfg", "setup.py", "/sydent/"]
+
+# Install dependencies
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN cd /sydent \
+    && pip install  --upgrade pip setuptools sentry-sdk \
+    && pip install  -e . \
+    && rm -rf /sydent/.cache \
+    && find /sydent -name '*.pyc' -delete
+
+RUN mkdir /data /home/sydent
+
+ENV SYDENT_CONF=/data/sydent.conf
+ENV SYDENT_PID_FILE=/data/sydent.pid
+ENV SYDENT_DB_PATH=/data/sydent.db
+
+WORKDIR /sydent
+VOLUME ["/data"]
+EXPOSE 8090/tcp
+CMD [ "python", "-m", "sydent.sydent" ]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style>
+ .container {
+    display: flex;
+    align-items: center;        /* 垂直居中 */
+    justify-content: center;    /* 水平居中 */
+ }
+ .container div {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+ }
+</style>
+</head>
+<body>
+<div class="container">
+    <div>%(message)s</div>
+</div>
+</body>
+</html>
