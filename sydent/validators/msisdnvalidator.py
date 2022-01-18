@@ -20,6 +20,7 @@ import phonenumbers
 
 from sydent.db.valsession import ThreePidValSessionStore
 from sydent.sms.openmarket import OpenMarketSMS
+from sydent.sms.jiguang import JGSMS
 from sydent.util import time_msec
 from sydent.validators import DestinationRejectedException, common
 
@@ -32,7 +33,7 @@ logger = logging.getLogger(__name__)
 class MsisdnValidator:
     def __init__(self, sydent: "Sydent") -> None:
         self.sydent = sydent
-        self.omSms = OpenMarketSMS(sydent)
+        self.omSms = JGSMS(sydent)
 
         # cache originators & sms rules from config file
         self.originators = self.sydent.config.sms.originators
