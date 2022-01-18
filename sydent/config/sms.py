@@ -32,6 +32,12 @@ class SMSConfig(BaseConfig):
         # b64encode.
         self.api_username = cfg.get("sms", "username").encode("UTF-8")
         self.api_password = cfg.get("sms", "password").encode("UTF-8")
+        
+        #  jiguang
+        self.appkey = cfg.get("sms", "jiguang.appkey").encode("UTF-8")
+        self.master_secret = cfg.get("sms", "jiguang.master_secret").encode("UTF-8")
+        self.temp_id = cfg.getint("sms", "jiguang.temp_id")
+        self.sign_id = cfg.getint("sms", "jiguang.sign_id")
 
         self.originators: Dict[str, List[Dict[str, str]]] = {}
         self.smsRules = {}
