@@ -4,8 +4,15 @@
 .vscode/
 *.iml
 _trial_temp
+_trial_temp.lock
+*.egg
+*.egg-info
+.python-version
+.mypy_cache
+/env
 
 # Runtime files
-sydent.conf
-sydent.db
+/sydent.conf
+/sydent.db
+/sydent.pid
 /matrix_is_test/sydent.stderr

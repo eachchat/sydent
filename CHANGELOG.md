@@ -1,3 +1,229 @@
+Sydent 2.5.1 (2021-11-17)
+=========================
+
+This release fixes a bug in handling verification for third party IDs if requested via the deprecated `/api/v1/` endpoint. The other changes are all designed to improve error handling, and make Sydent's logging have a higher signal-to-noise ratio.
+
+Features
+--------
+
+- Return HTTP 400 Bad Request rather than HTTP 500 Internal Server Error if `/store-invite` is given an invalid email address. ([\#464](https://github.com/matrix-org/sydent/issues/464))
+
+
+Bugfixes
+--------
+
+- __Fix a bug introduced in Sydent 2.5.0 where requests to validate an email or phone number would fail with an HTTP 500 Internal Server Error if arguments were given as a query string or as a www-form-urlencoded body. ([\#461](https://github.com/matrix-org/sydent/issues/461), [\#462](https://github.com/matrix-org/sydent/issues/462))__
+
+
+Internal Changes
+----------------
+
+- Improve exception logging in `asyncjsonwrap` for better Sentry reports. ([\#455](https://github.com/matrix-org/sydent/issues/455))
+- Handle federation request failures in `/request` explicitly, to reduce Sentry noise. ([\#456](https://github.com/matrix-org/sydent/issues/456))
+- Log a warning (not an error) when we refuse to send an SMS to an unsupported country. ([\#459](https://github.com/matrix-org/sydent/issues/459))
+- Demote a failure to parse JSON from homeservers in `/register` from an error to a warning. ([\#463](https://github.com/matrix-org/sydent/issues/463))
+- Handle errors to contact homeservers in `/unbind`. This returns a better error message and reduces Sentry spam. ([\#466](https://github.com/matrix-org/sydent/issues/466))
+- Log failures to send SMS as exceptions, not errors (to better debug in Sentry). ([\#467](https://github.com/matrix-org/sydent/issues/467))
+
+
+Sydent 2.5.0 (2021-11-03)
+=========================
+
+This release [deprecates `.eml` templates](https://github.com/matrix-org/sydent/issues/395) in favour of Jinja 2 `.eml.j2` templates. See the [documentation](https://github.com/matrix-org/sydent/blob/main/docs/templates.md#template-formats) for more details.
+
+Features
+--------
+
+- __Support the stable `room_type` field for [MSC3288](https://github.com/matrix-org/matrix-doc/pull/3288).__ ([\#437](https://github.com/matrix-org/sydent/issues/437))
+
+
+Bugfixes
+--------
+
+- __Fix a bug which could cause SMS sending to fail silently.__ ([\#412](https://github.com/matrix-org/sydent/issues/412))
+- Fix a bug introduced in v2.4.0 that caused association unbindings to fail with an internal server error. ([\#397](https://github.com/matrix-org/sydent/issues/397))
+- Fix an issue which could cause new local associations to be replicated multiple times to peers. ([\#400](https://github.com/matrix-org/sydent/issues/400))
+- Fix an issue where `obey_x_forwarded_for` was not being honoured. ([\#403](https://github.com/matrix-org/sydent/issues/403))
+- Fix misleading logging and potential TypeErrors related to replication ports in Sydent's database. ([\#420](https://github.com/matrix-org/sydent/issues/420))
+- Fix a bug introduced in v2.0.0 where requesting `GET` from `/identity/api/v1/validate/msisdn/submitToken` or `/identity/v2/validate/msisdn/submitToken` would fail with an internal server error. ([\#445](https://github.com/matrix-org/sydent/issues/445))
+- Fix `/v2/account/logout` to return HTTP 400 BAD REQUEST instead of 200 OK if a token was not provided. ([\#447](https://github.com/matrix-org/sydent/issues/447))
+- Fix a long-standing spec compliance bug where the response to `POST /identity/{api/v1,v2}/3pid/unbind` was `null`, not `{}`. ([\#449](https://github.com/matrix-org/sydent/issues/449))
+
+
+Improved Documentation
+----------------------
+
+- Fix the documentation around the command line arguments for the email address migration script. ([\#392](https://github.com/matrix-org/sydent/issues/392))
+- Add documentation on writing templates. Deprecate .eml templates. ([\#395](https://github.com/matrix-org/sydent/issues/395))
+
+
+Internal Changes
+----------------
+
+- __Improve type annotations throughout Sydent. Sydent now passes `mypy --strict`.__ ([\#414](https://github.com/matrix-org/sydent/issues/414) and others).
+- Extend the changelog check so that it checks for the correct pull request number being used. ([\#382](https://github.com/matrix-org/sydent/issues/382))
+- Move the configuration file handling code into a separate module. ([\#385](https://github.com/matrix-org/sydent/issues/385), [\#405](https://github.com/matrix-org/sydent/issues/405))
+- Add a primitive contributing guide and tweak the pull request template. ([\#393](https://github.com/matrix-org/sydent/issues/393))
+- Run mypy on the sydent package as part of CI. ([\#416](https://github.com/matrix-org/sydent/issues/416))
+- Configure @matrix-org/synapse-core to be the code owner for the repository. ([\#436](https://github.com/matrix-org/sydent/issues/436))
+- Run linters over stub files. ([\#441](https://github.com/matrix-org/sydent/issues/441), [\#450](https://github.com/matrix-org/sydent/issues/450))
+- Include Sydent's version number (and git commit hash if available) when reporting to Sentry. ([\#453](https://github.com/matrix-org/sydent/issues/453), [\#454](https://github.com/matrix-org/sydent/issues/454))
+
+
+Sydent 2.4.6 (2021-10-08)
+=========================
+
+Bugfixes
+--------
+
+- Fix a long-standing bug with error handling around missing headers when dealing with the OpenMarket API, which could cause the wrong assumption that sending a SMS failed when it didn't. ([\#415](https://github.com/matrix-org/sydent/issues/415))
+
+
+Sydent 2.4.5 (2021-10-08)
+=========================
+
+Bugfixes
+--------
+
+- Fix a long-standing bug in asynchronous code that could cause SMS messages not to be correctly sent. ([\#413](https://github.com/matrix-org/sydent/issues/413))
+
+
+Sydent 2.4.4 (2021-10-08)
+=========================
+
+Bugfixes
+--------
+
+- Fix a bug introduced in v2.4.0 which could cause SMS sending to fail silently. ([\#412](https://github.com/matrix-org/sydent/issues/412))
+
+
+Sydent 2.4.3 (2021-09-14)
+=========================
+
+Bugfixes
+--------
+
+- Fix a bug introduced in v2.4.0 that caused association unbindings to fail with an Internal Server Error. ([\#397](https://github.com/matrix-org/sydent/issues/397))
+
+
+Sydent 2.4.2 (2021-09-13)
+=========================
+
+Bugfixes
+--------
+
+- Fix a bug causing the email address migration script to take a lot of time to run due to inefficient database queries. ([\#396](https://github.com/matrix-org/sydent/issues/396))
+
+
+Internal Changes
+----------------
+
+- Move dev tools from `install_requires` to `extras_require`. ([\#389](https://github.com/matrix-org/sydent/issues/389))
+- Run background jobs in `run` rather than in Sydent's constructor. ([\#394](https://github.com/matrix-org/sydent/issues/394))
+
+
+Sydent 2.4.1 (2021-09-10)
+=========================
+
+Bugfixes
+--------
+
+- Fix a bug preventing the email migration script from running while Sydent is already running with Prometheus metrics enabled. ([\#391](https://github.com/matrix-org/sydent/issues/391))
+
+
+Sydent 2.4.0 (2021-09-09)
+=========================
+
+**This release drops compatibility with Python 3.5 and older. Python 3.6 and later is required to run Sydent from this version onwards.**
+
+**Action required when upgrading**: server administrators should run [the e-mail address migration script](./docs/casefold_migration.md).
+
+Features
+--------
+
+- Experimental support for [MSC3288](https://github.com/matrix-org/matrix-doc/pull/3288), receiving `room_type` for 3pid invites over the `/store-invite` API and using it in Jinja templates for Space invites. ([\#375](https://github.com/matrix-org/sydent/issues/375))
+- Add support for using Jinja2 in e-mail templates. Contributed by @H-Shay. ([\#376](https://github.com/matrix-org/sydent/issues/376))
+- Case-fold email addresses when binding to MXIDs or performing look-ups. Contributed by @H-Shay. ([\#374](https://github.com/matrix-org/sydent/issues/374), [\#378](https://github.com/matrix-org/sydent/issues/378), [\#379](https://github.com/matrix-org/sydent/issues/379), [\#386](https://github.com/matrix-org/sydent/issues/386))
+
+
+Bugfixes
+--------
+
+- Handle CORS for `GetValidated3pidServlet`. Endpoint `/3pid/getValidated3pid` returns valid CORS headers. ([\#342](https://github.com/matrix-org/sydent/issues/342))
+- Use the `web_client_location` parameter in default templates for both text and HTML emails. ([\#380](https://github.com/matrix-org/sydent/issues/380))
+
+
+Internal Changes
+----------------
+
+- Add `/_trial_temp.lock` and `/sydent.pid` to .gitignore. ([\#384](https://github.com/matrix-org/sydent/issues/384))
+- Reformat code using Black. Contributed by @H-Shay. ([\#344](https://github.com/matrix-org/sydent/issues/344), [\#369](https://github.com/matrix-org/sydent/issues/369))
+- Configure Flake8 and resolve errors. ([\#345](https://github.com/matrix-org/sydent/issues/345), [\#347](https://github.com/matrix-org/sydent/issues/347))
+- Add GitHub Actions for unit tests (Python 3.6 and 3.9), matrix_is_tester tests (Python 3.6 and 3.9), towncrier checks and black and flake8 codestyle checks. ([\#346](https://github.com/matrix-org/sydent/issues/346), [\#348](https://github.com/matrix-org/sydent/issues/348))
+- Remove support for Python < 3.6. Contributed by @sunweaver. ([\#349](https://github.com/matrix-org/sydent/issues/349), [\#356](https://github.com/matrix-org/sydent/issues/356))
+- Bump minimum supported version of Twisted to 18.4.0 and stop calling deprecated APIs. ([\#350](https://github.com/matrix-org/sydent/issues/350))
+- Replace deprecated `logging.warn()` method with `logging.warning()`. ([\#351](https://github.com/matrix-org/sydent/issues/351))
+- Reformat imports using isort. ([\#352](https://github.com/matrix-org/sydent/issues/352), [\#353](https://github.com/matrix-org/sydent/issues/353))
+- Update `.gitignore` to only ignore `sydent.conf` and `sydent.db` if they occur in the project's base folder. ([\#354](https://github.com/matrix-org/sydent/issues/354))
+- Add type hints and validate with mypy. ([\#355](https://github.com/matrix-org/sydent/issues/355), [\#357](https://github.com/matrix-org/sydent/issues/357), [\#358](https://github.com/matrix-org/sydent/issues/358), [\#360](https://github.com/matrix-org/sydent/issues/360), [\#361](https://github.com/matrix-org/sydent/issues/361), [\#367](https://github.com/matrix-org/sydent/issues/367), [\#371](https://github.com/matrix-org/sydent/issues/371))
+- Convert `inlineCallbacks` to async/await. ([\#364](https://github.com/matrix-org/sydent/issues/364), [\#365](https://github.com/matrix-org/sydent/issues/365), [\#368](https://github.com/matrix-org/sydent/issues/368), [\#372](https://github.com/matrix-org/sydent/issues/372), [\#373](https://github.com/matrix-org/sydent/issues/373))
+- Use `mock` module from the standard library. ([\#370](https://github.com/matrix-org/sydent/issues/370))
+- Fix email templates to be valid python format strings. ([\#377](https://github.com/matrix-org/sydent/issues/377))
+
+
+Sydent 2.3.0 (2021-04-15)
+=========================
+
+**Note**: this will be the last release of Sydent to support Python 3.5 or earlier. Future releases will require at least Python 3.6.
+
+Security advisory
+-----------------
+
+This release contains fixes to the following security issues:
+
+- Denial of service attack via disk space or memory exhaustion ([CVE-2021-29430](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-29430)).
+- SSRF due to missing validation of hostnames ([CVE-2021-29431](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-29431)).
+- Malicious users could control the content of invitation emails ([CVE-2021-29432](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-29432)).
+- Denial of service (via resource exhaustion) due to improper input validation ([CVE-2021-29433](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-29433)).
+
+Although we are not aware of these vulnerabilities being exploited in the wild, Sydent server administrators are advised to update as soon as possible. Note that as well as changes to the package, there are also changes to the default email templates. If any templates have been updated locally, they must also be updated in line with the changes to the defaults for full protection from CVE-2021-29432.
+
+Features
+--------
+
+- Accept an optional `web_client_location` argument to the invite endpoint which allows customisation of the email template. ([\#326](https://github.com/matrix-org/sydent/issues/326))
+- Move templates to a per-brand subdirectory of `/res`. Add `templates.path` and `brand.default` config options. ([\#328](https://github.com/matrix-org/sydent/issues/328))
+
+
+Bugfixes
+--------
+
+- Fix a regression in v2.2.0 where the wrong characters would be obfuscated in a 3pid invite. ([\#317](https://github.com/matrix-org/sydent/issues/317))
+- Fix a long-standing bug where invalid JSON would be accepted over the HTTP interfaces. ([\#337](https://github.com/matrix-org/sydent/issues/337))
+- During user registration on the identity server, validate that the MXID returned by the contacted homeserver is valid for that homeserver. ([cc97fff](https://github.com/matrix-org/sydent/commit/cc97fff))
+- Ensure that `/v2/` endpoints are correctly authenticated. ([ce04a68](https://github.com/matrix-org/sydent/commit/ce04a68))
+- Perform additional validation on the response received when requesting server signing keys. ([07e6da7](https://github.com/matrix-org/sydent/commit/07e6da7))
+- Validate the `matrix_server_name` parameter given during user registration. ([9e57334](https://github.com/matrix-org/sydent/commit/9e57334), [8936925](https://github.com/matrix-org/sydent/commit/8936925), [3d531ed](https://github.com/matrix-org/sydent/commit/3d531ed), [0f00412](https://github.com/matrix-org/sydent/commit/0f00412))
+- Limit the size of requests received from HTTP clients. ([89071a1](https://github.com/matrix-org/sydent/commit/89071a1), [0523511](https://github.com/matrix-org/sydent/commit/0523511), [f56eee3](https://github.com/matrix-org/sydent/commit/f56eee3))
+- Limit the size of responses received from HTTP servers. ([89071a1](https://github.com/matrix-org/sydent/commit/89071a1), [0523511](https://github.com/matrix-org/sydent/commit/0523511), [f56eee3](https://github.com/matrix-org/sydent/commit/f56eee3))
+- In invite emails, randomise the multipart boundary, and include MXIDs where available. ([4469d1d](https://github.com/matrix-org/sydent/commit/4469d1d), [6b405a8](https://github.com/matrix-org/sydent/commit/6b405a8), [65a6e91](https://github.com/matrix-org/sydent/commit/65a6e91))
+- Perform additional validation on the `client_secret` and `email` parameters to various APIs. ([3175fd3](https://github.com/matrix-org/sydent/commit/3175fd3))
+
+
+Updates to the Docker image
+---------------------------
+
+- Base docker image on Debian rather than Alpine Linux. ([\#335](https://github.com/matrix-org/sydent/issues/335))
+
+
+Internal Changes
+----------------
+
+- Fix test logging to allow braces in log output. ([\#318](https://github.com/matrix-org/sydent/issues/318))
+- Install prometheus_client in the Docker image. ([\#325](https://github.com/matrix-org/sydent/issues/325))
+- Bump the version of signedjson to 1.1.1. ([\#334](https://github.com/matrix-org/sydent/issues/334))
+
+
 Sydent 2.2.0 (2020-09-11)
 =========================
 

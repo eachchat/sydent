@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2014 OpenMarket Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,31 +12,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import TYPE_CHECKING, Any, Dict
+
 import signedjson.sign
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
+    from sydent.threepid import ThreepidAssociation
 
 
 class Signer:
-    def __init__(self, sydent):
+    def __init__(self, sydent: "Sydent") -> None:
         self.sydent = sydent
 
-    def signedThreePidAssociation(self, assoc):
+    def signedThreePidAssociation(self, assoc: "ThreepidAssociation") -> Dict[str, Any]:
         """
         Signs a 3PID association.
 
         :param assoc: The association to sign.
-        :type assoc: sydent.threepid.ThreepidAssociation
 
         :return: A signed representation of the association.
-        :rtype: dict[str, any]
         """
         sgassoc = {
-            'medium': assoc.medium,
-            'address': assoc.address,
-            'mxid': assoc.mxid,
-            'ts': assoc.ts,
-            'not_before': assoc.not_before,
-            'not_after': assoc.not_after
+            "medium": assoc.medium,
+            "address": assoc.address,
+            "mxid": assoc.mxid,
+            "ts": assoc.ts,
+            "not_before": assoc.not_before,
+            "not_after": assoc.not_after,
         }
         sgassoc.update(assoc.extra_fields)
-        sgassoc = signedjson.sign.sign_json(sgassoc, self.sydent.server_name, self.sydent.keyring.ed25519)
+        sgassoc = signedjson.sign.sign_json(
+            sgassoc, self.sydent.config.general.server_name, self.sydent.keyring.ed25519
+        )
         return sgassoc

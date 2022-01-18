@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2019 The Matrix.org Foundation C.I.C.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,28 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class TermsStore(object):
-    def __init__(self, sydent):
+from typing import TYPE_CHECKING, List
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
+
+
+class TermsStore:
+    def __init__(self, sydent: "Sydent") -> None:
         self.sydent = sydent
 
-    def getAgreedUrls(self, user_id):
+    def getAgreedUrls(self, user_id: str) -> List[str]:
         """
         Retrieves the URLs of the terms the given user has agreed to.
 
         :param user_id: Matrix user ID to fetch the URLs for.
-        :type user_id: str
 
         :return: A list of the URLs of the terms accepted by the user.
-        :rtype: list[unicode]
         """
         cur = self.sydent.db.cursor()
         res = cur.execute(
-            "select url from accepted_terms_urls "
-            "where user_id = ?", (user_id,),
+            "select url from accepted_terms_urls " "where user_id = ?",
+            (user_id,),
         )
 
         urls = []
-        for url, in res:
+        for (url,) in res:
             # Ensure we're dealing with unicode.
             if url and isinstance(url, bytes):
                 url = url.decode("UTF-8")
@@ -44,17 +46,15 @@ class TermsStore(object):
 
         return urls
 
-    def addAgreedUrls(self, user_id, urls):
+    def addAgreedUrls(self, user_id: str, urls: List[str]) -> None:
         """
         Saves that the given user has accepted the terms at the given URLs.
 
         :param user_id: The Matrix user ID that has accepted the terms.
-        :type user_id: str
         :param urls: The list of URLs.
-        :type urls: list[unicode]
         """
         cur = self.sydent.db.cursor()
-        res = cur.executemany(
+        cur.executemany(
             "insert or ignore into accepted_terms_urls (user_id, url) values (?, ?)",
             ((user_id, u) for u in urls),
         )

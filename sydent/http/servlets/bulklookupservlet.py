@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2017 OpenMarket Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from __future__ import absolute_import
-
-from twisted.web.resource import Resource
-from sydent.db.threepid_associations import GlobalAssociationStore
 
 import logging
+from typing import TYPE_CHECKING
 
-from sydent.http.servlets import get_args, jsonwrap, send_cors, MatrixRestError
-from sydent.http.auth import authIfV2
+from twisted.web.resource import Resource
+from twisted.web.server import Request
 
+from sydent.db.threepid_associations import GlobalAssociationStore
+from sydent.http.servlets import MatrixRestError, get_args, jsonwrap, send_cors
+from sydent.types import JsonDict
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
 
 logger = logging.getLogger(__name__)
 
@@ -30,11 +31,11 @@ logger = logging.getLogger(__name__)
 class BulkLookupServlet(Resource):
     isLeaf = True
 
-    def __init__(self, syd):
+    def __init__(self, syd: "Sydent") -> None:
         self.sydent = syd
 
     @jsonwrap
-    def render_POST(self, request):
+    def render_POST(self, request: Request) -> JsonDict:
         """
         Bulk-lookup for threepids.
         Params: 'threepids': list of threepids, each of which is a list of medium, address
@@ -45,22 +46,19 @@ class BulkLookupServlet(Resource):
         """
         send_cors(request)
 
-        authIfV2(self.sydent, request)
+        args = get_args(request, ("threepids",))
 
-        args = get_args(request, ('threepids',))
-
-        threepids = args['threepids']
+        threepids = args["threepids"]
         if not isinstance(threepids, list):
-            raise MatrixRestError(400, 'M_INVALID_PARAM', 'threepids must be a list')
+            raise MatrixRestError(400, "M_INVALID_PARAM", "threepids must be a list")
 
         logger.info("Bulk lookup of %d threepids", len(threepids))
 
         globalAssocStore = GlobalAssociationStore(self.sydent)
         results = globalAssocStore.getMxids(threepids)
 
-        return {'threepids': results}
+        return {"threepids": results}
 
-
-    def render_OPTIONS(self, request):
+    def render_OPTIONS(self, request: Request) -> bytes:
         send_cors(request)
-        return b''
+        return b""

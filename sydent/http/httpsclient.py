@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2014 OpenMarket Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,18 +11,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from __future__ import absolute_import
 
-import logging
 import json
+import logging
 from io import BytesIO
+from typing import TYPE_CHECKING, Optional
 
+from twisted.internet.defer import Deferred
+from twisted.internet.interfaces import IOpenSSLClientConnectionCreator
+from twisted.internet.ssl import optionsForClientTLS
+from twisted.web.client import Agent, FileBodyProducer, Response
+from twisted.web.http_headers import Headers
+from twisted.web.iweb import IPolicyForHTTPS
 from zope.interface import implementer
 
-from twisted.internet.ssl import optionsForClientTLS
-from twisted.web.client import Agent, FileBodyProducer
-from twisted.web.iweb import IPolicyForHTTPS
-from twisted.web.http_headers import Headers
+from sydent.types import JsonDict
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
 
 logger = logging.getLogger(__name__)
 
@@ -35,50 +39,57 @@ class ReplicationHttpsClient:
     (ie. presents our replication SSL certificate and validates peer SSL certificates as we would in the
     replication HTTPS server)
     """
-    def __init__(self, sydent):
+
+    def __init__(self, sydent: "Sydent") -> None:
         self.sydent = sydent
-        self.agent = None
+        self.agent: Optional[Agent] = None
 
         if self.sydent.sslComponents.myPrivateCertificate:
             # We will already have logged a warn if this is absent, so don't do it again
-            #cert = self.sydent.sslComponents.myPrivateCertificate
-            #self.certOptions = twisted.internet.ssl.CertificateOptions(privateKey=cert.privateKey.original,
+            # cert = self.sydent.sslComponents.myPrivateCertificate
+            # self.certOptions = twisted.internet.ssl.CertificateOptions(privateKey=cert.privateKey.original,
             #                                                      certificate=cert.original,
             #                                                      trustRoot=self.sydent.sslComponents.trustRoot)
             self.agent = Agent(self.sydent.reactor, SydentPolicyForHTTPS(self.sydent))
 
-    def postJson(self, uri, jsonObject):
+    def postJson(
+        self, uri: str, jsonObject: JsonDict
+    ) -> Optional["Deferred[Response]"]:
         """
         Sends an POST request over HTTPS.
 
         :param uri: The URI to send the request to.
-        :type uri: unicode
         :param jsonObject: The request's body.
-        :type jsonObject: dict[any, any]
 
         :return: The request's response.
-        :rtype: twisted.internet.defer.Deferred[twisted.web.iweb.IResponse]
         """
         logger.debug("POSTing request to %s", uri)
         if not self.agent:
             logger.error("HTTPS post attempted but HTTPS is not configured")
-            return
+            return None
 
-        headers = Headers({'Content-Type': ['application/json'], 'User-Agent': ['Sydent']})
+        headers = Headers(
+            {"Content-Type": ["application/json"], "User-Agent": ["Sydent"]}
+        )
 
         json_bytes = json.dumps(jsonObject).encode("utf8")
-        reqDeferred = self.agent.request(b'POST', uri.encode('utf8'), headers,
-                                         FileBodyProducer(BytesIO(json_bytes)))
+        reqDeferred = self.agent.request(
+            b"POST", uri.encode("utf8"), headers, FileBodyProducer(BytesIO(json_bytes))
+        )
 
         return reqDeferred
 
 
 @implementer(IPolicyForHTTPS)
-class SydentPolicyForHTTPS(object):
-    def __init__(self, sydent):
+class SydentPolicyForHTTPS:
+    def __init__(self, sydent: "Sydent") -> None:
         self.sydent = sydent
 
-    def creatorForNetloc(self, hostname, port):
-        return optionsForClientTLS(hostname.decode("ascii"),
-                                   trustRoot=self.sydent.sslComponents.trustRoot,
-                                   clientCertificate=self.sydent.sslComponents.myPrivateCertificate)
+    def creatorForNetloc(
+        self, hostname: bytes, port: int
+    ) -> IOpenSSLClientConnectionCreator:
+        return optionsForClientTLS(
+            hostname.decode("ascii"),
+            trustRoot=self.sydent.sslComponents.trustRoot,
+            clientCertificate=self.sydent.sslComponents.myPrivateCertificate,
+        )

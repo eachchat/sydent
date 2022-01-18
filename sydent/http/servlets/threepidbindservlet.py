@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2014 OpenMarket Ltd
 # Copyright 2019 The Matrix.org Foundation C.I.C.
 #
@@ -14,42 +12,60 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from __future__ import absolute_import
+
+from typing import TYPE_CHECKING
 
 from twisted.web.resource import Resource
+from twisted.web.server import Request
 
 from sydent.db.valsession import ThreePidValSessionStore
-from sydent.http.servlets import get_args, jsonwrap, send_cors, MatrixRestError
-from sydent.http.auth import authIfV2
+from sydent.http.auth import authV2
+from sydent.http.servlets import MatrixRestError, get_args, jsonwrap, send_cors
+from sydent.types import JsonDict
 from sydent.util.stringutils import is_valid_client_secret
-from sydent.validators import SessionExpiredException, IncorrectClientSecretException, InvalidSessionIdException,\
-    SessionNotValidatedException
+from sydent.validators import (
+    IncorrectClientSecretException,
+    InvalidSessionIdException,
+    SessionExpiredException,
+    SessionNotValidatedException,
+)
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
 
 
 class ThreePidBindServlet(Resource):
-    def __init__(self, sydent):
+    def __init__(self, sydent: "Sydent", require_auth: bool = False) -> None:
         self.sydent = sydent
+        self.require_auth = require_auth
 
     @jsonwrap
-    def render_POST(self, request):
+    def render_POST(self, request: Request) -> JsonDict:
         send_cors(request)
 
-        account = authIfV2(self.sydent, request)
+        account = None
+        if self.require_auth:
+            account = authV2(self.sydent, request)
 
-        args = get_args(request, ('sid', 'client_secret', 'mxid'))
+        args = get_args(request, ("sid", "client_secret", "mxid"))
 
-        sid = args['sid']
-        mxid = args['mxid']
-        clientSecret = args['client_secret']
+        sid = args["sid"]
+        mxid = args["mxid"]
+        clientSecret = args["client_secret"]
 
         if not is_valid_client_secret(clientSecret):
             raise MatrixRestError(
-                400, 'M_INVALID_PARAM', 'Invalid client_secret provided')
+                400, "M_INVALID_PARAM", "Invalid client_secret provided"
+            )
 
         if account:
             # This is a v2 API so only allow binding to the logged in user id
             if account.userId != mxid:
-                raise MatrixRestError(403, 'M_UNAUTHORIZED', "This user is prohibited from binding to the mxid");
+                raise MatrixRestError(
+                    403,
+                    "M_UNAUTHORIZED",
+                    "This user is prohibited from binding to the mxid",
+                )
 
         try:
             valSessionStore = ThreePidValSessionStore(self.sydent)
@@ -60,22 +76,25 @@ class ThreePidBindServlet(Resource):
             # secret.
             raise MatrixRestError(
                 404,
-                'M_NO_VALID_SESSION',
-                "No valid session was found matching that sid and client secret")
+                "M_NO_VALID_SESSION",
+                "No valid session was found matching that sid and client secret",
+            )
         except SessionExpiredException:
             raise MatrixRestError(
                 400,
-                'M_SESSION_EXPIRED',
-                "This validation session has expired: call requestToken again")
+                "M_SESSION_EXPIRED",
+                "This validation session has expired: call requestToken again",
+            )
         except SessionNotValidatedException:
             raise MatrixRestError(
                 400,
-                'M_SESSION_NOT_VALIDATED',
-                "This validation session has not yet been completed")
+                "M_SESSION_NOT_VALIDATED",
+                "This validation session has not yet been completed",
+            )
 
         res = self.sydent.threepidBinder.addBinding(s.medium, s.address, mxid)
         return res
 
-    def render_OPTIONS(self, request):
+    def render_OPTIONS(self, request: Request) -> bytes:
         send_cors(request)
-        return b''
+        return b""

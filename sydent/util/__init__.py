@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2014 OpenMarket Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import time
+from typing import NoReturn
 
 
-def time_msec():
+def time_msec() -> int:
     """
     Get the current time in milliseconds.
 
     :return: The current time in milliseconds.
-    :rtype: int
     """
     return int(time.time() * 1000)
+
+
+def _reject_invalid_json(val: str) -> NoReturn:
+    """Do not allow Infinity, -Infinity, or NaN values in JSON."""
+    raise ValueError("Invalid JSON value: '%s'" % val)
+
+
+# a custom JSON decoder which will reject Python extensions to JSON.
+json_decoder = json.JSONDecoder(parse_constant=_reject_invalid_json)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 The Matrix.org Foundation C.I.C.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,28 +11,30 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from __future__ import absolute_import
 
 import logging
 import time
+from typing import TYPE_CHECKING
 
-from sydent.util.tokenutils import generateAlphanumericTokenOfLength
 from sydent.db.accounts import AccountStore
+from sydent.util.tokenutils import generateAlphanumericTokenOfLength
+
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
+
 
 logger = logging.getLogger(__name__)
 
-def issueToken(sydent, user_id):
+
+def issueToken(sydent: "Sydent", user_id: str) -> str:
     """
     Creates an account for the given Matrix user ID, then generates, saves and returns
     an access token for that account.
 
     :param sydent: The Sydent instance to use for storing the token.
-    :type sydent: sydent.sydent.Sydent
     :param user_id: The Matrix user ID to issue a token for.
-    :type user_id: unicode
 
     :return: The access token for that account.
-    :rtype: unicode
     """
     accountStore = AccountStore(sydent)
     accountStore.storeAccount(user_id, int(time.time() * 1000), None)

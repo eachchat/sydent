@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2020 The Matrix.org Foundation C.I.C.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,18 +31,17 @@ class AuthTestCase(unittest.TestCase):
         cur.execute(
             "INSERT INTO accounts (user_id, created_ts, consent_version)"
             "VALUES (?, ?, ?)",
-            ("@bob:localhost", 101010101, "asd")
+            ("@bob:localhost", 101010101, "asd"),
         )
         cur.execute(
-            "INSERT INTO tokens (user_id, token)"
-            "VALUES (?, ?)",
-            ("@bob:localhost", self.test_token)
+            "INSERT INTO tokens (user_id, token)" "VALUES (?, ?)",
+            ("@bob:localhost", self.test_token),
         )
 
         self.sydent.db.commit()
 
     def test_can_read_token_from_headers(self):
-        """Tests that Sydent correct extracts an auth token from request headers"""
+        """Tests that Sydent correctly extracts an auth token from request headers"""
         self.sydent.run()
 
         request, _ = make_request(
@@ -59,12 +56,13 @@ class AuthTestCase(unittest.TestCase):
         self.assertEqual(token, self.test_token)
 
     def test_can_read_token_from_query_parameters(self):
-        """Tests that Sydent correct extracts an auth token from query parameters"""
+        """Tests that Sydent correctly extracts an auth token from query parameters"""
         self.sydent.run()
 
         request, _ = make_request(
-            self.sydent.reactor, "GET",
-            "/_matrix/identity/v2/hash_details?access_token=" + self.test_token
+            self.sydent.reactor,
+            "GET",
+            "/_matrix/identity/v2/hash_details?access_token=" + self.test_token,
         )
 
         token = tokenFromRequest(request)

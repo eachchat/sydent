@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2019 The Matrix.org Foundation C.I.C.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from __future__ import absolute_import
-
-from twisted.web.resource import Resource
 
 import logging
+from typing import TYPE_CHECKING
 
-from sydent.http.servlets import jsonwrap, send_cors
+from twisted.web.resource import Resource
+from twisted.web.server import Request
+
 from sydent.db.accounts import AccountStore
-from sydent.http.auth import authIfV2, tokenFromRequest
+from sydent.http.auth import authV2, tokenFromRequest
+from sydent.http.servlets import MatrixRestError, jsonwrap, send_cors
+from sydent.types import JsonDict
 
+if TYPE_CHECKING:
+    from sydent.sydent import Sydent
 
 logger = logging.getLogger(__name__)
 
@@ -30,25 +32,26 @@ logger = logging.getLogger(__name__)
 class LogoutServlet(Resource):
     isLeaf = True
 
-    def __init__(self, syd):
+    def __init__(self, syd: "Sydent") -> None:
         self.sydent = syd
 
     @jsonwrap
-    def render_POST(self, request):
+    def render_POST(self, request: Request) -> JsonDict:
         """
         Invalidate the given access token
         """
         send_cors(request)
 
-        authIfV2(self.sydent, request, False)
+        authV2(self.sydent, request, False)
 
         token = tokenFromRequest(request)
+        if token is None:
+            raise MatrixRestError(400, "M_MISSING_PARAMS", "Missing token")
 
         accountStore = AccountStore(self.sydent)
         accountStore.delToken(token)
         return {}
 
-    def render_OPTIONS(self, request):
+    def render_OPTIONS(self, request: Request) -> bytes:
         send_cors(request)
-        return b''
-
+        return b""
