@@ -1,32 +1,161 @@
-2022-01-11 15:26:10,847 - __main__ - 192 - INFO - Starting Sydent server
-2022-01-11 15:26:10,847 - sydent.db.sqlitedb - 29 - INFO - Using DB file sydent.db
-2022-01-11 15:26:10,848 - sydent.db.sqlitedb - 43 - INFO - Running schema files...
-2022-01-11 15:26:10,848 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/threepid_associations.sql
-2022-01-11 15:26:10,855 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/threepid_validation.sql
-2022-01-11 15:26:10,858 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/invite_tokens.sql
-2022-01-11 15:26:10,866 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/peers.sql
-2022-01-11 15:26:10,883 - sydent.db.sqlitedb - 74 - INFO - Migrating schema from v0 to v1
-2022-01-11 15:26:10,911 - sydent.db.sqlitedb - 134 - INFO - v0 -> v1 schema migration complete
-2022-01-11 15:26:10,916 - sydent.db.sqlitedb - 138 - INFO - Migrating schema from v1 to v2
-2022-01-11 15:26:10,925 - sydent.db.sqlitedb - 142 - INFO - v1 -> v2 schema migration complete
-2022-01-11 15:26:10,965 - sydent.db.sqlitedb - 172 - INFO - v2 -> v3 schema migration complete
-2022-01-11 15:26:11,018 - sydent.db.sqlitedb - 182 - INFO - v3 -> v4 schema migration complete
-2022-01-11 15:26:11,042 - sydent.db.sqlitedb - 191 - INFO - v4 -> v5 schema migration complete
-2022-01-11 15:26:11,057 - sydent.http.httpcommon - 33 - WARNING - No HTTPS private key / cert found: not starting replication server or doing replication pushes
-2022-01-11 15:26:11,058 - sydent.http.httpserver - 139 - INFO - Starting Client API HTTP server on :::8090
-2022-01-11 15:26:11,059 - twisted - 147 - INFO - Site starting on 8090
-2022-01-11 15:26:11,060 - twisted - 147 - INFO - Starting factory <twisted.web.server.Site object at 0x7fc8cc414c10>
-2022-01-11 15:26:15,518 - twisted - 147 - INFO - Received SIGINT, shutting down.
-2022-01-11 15:26:15,518 - twisted - 147 - INFO - (TCP Port 8090 Closed)
-2022-01-11 15:26:15,518 - twisted - 147 - INFO - Stopping factory <twisted.web.server.Site object at 0x7fc8cc414c10>
-2022-01-11 15:26:15,519 - twisted - 147 - INFO - Main loop terminated.
-2022-01-11 15:50:26,719 - __main__ - 169 - INFO - Starting Sydent server
-2022-01-11 15:50:26,719 - sydent.db.sqlitedb - 29 - INFO - Using DB file sydent.db
-2022-01-11 15:50:26,722 - sydent.http.httpcommon - 33 - WARNING - No HTTPS private key / cert found: not starting replication server or doing replication pushes
-2022-01-11 15:50:26,722 - sydent.http.httpserver - 139 - INFO - Starting Client API HTTP server on :::8090
-2022-01-11 15:50:26,723 - twisted - 147 - INFO - Site starting on 8090
-2022-01-11 15:50:26,724 - twisted - 147 - INFO - Starting factory <twisted.web.server.Site object at 0x7fe59a70ad00>
-2022-01-11 15:50:35,263 - twisted - 147 - INFO - Received SIGINT, shutting down.
-2022-01-11 15:50:35,263 - twisted - 147 - INFO - (TCP Port 8090 Closed)
-2022-01-11 15:50:35,264 - twisted - 147 - INFO - Stopping factory <twisted.web.server.Site object at 0x7fe59a70ad00>
-2022-01-11 15:50:35,264 - twisted - 147 - INFO - Main loop terminated.
+2022-01-12 00:54:40,812 - __main__ - 169 - INFO - Starting Sydent server
+2022-01-12 00:54:40,812 - sydent.db.sqlitedb - 29 - INFO - Using DB file sydent.db
+2022-01-12 00:54:40,815 - sydent.http.httpcommon - 33 - WARNING - No HTTPS private key / cert found: not starting replication server or doing replication pushes
+2022-01-12 00:54:40,815 - sydent.http.httpserver - 139 - INFO - Starting Client API HTTP server on :::8090
+2022-01-12 00:54:40,817 - twisted - 147 - INFO - Site starting on 8090
+2022-01-12 00:54:40,817 - twisted - 147 - INFO - Starting factory <twisted.web.server.Site object at 0x7fc588fcfac0>
+2022-01-12 00:54:44,760 - sydent.validators.emailvalidator - 72 - INFO - Attempting to mail code QWisA7f3tn3DHTbGXBJwGtkPJF1nqrzY (nextLink: None) to test@163.com
+2022-01-12 00:54:44,761 - sydent.util.emailutils - 94 - INFO - Sending mail to test@163.com with mail server: smtp.163.com
+2022-01-12 00:54:45,203 - twisted - 147 - INFO - "::ffff:192.168.15.2" - - [11/Jan/2022:16:54:43 +0000] "POST /_matrix/identity/api/v1/validate/email/requestToken HTTP/1.1" 200 20 "-" "Synapse/1.29.0 (b=ldap-login,29fe6a59a)"
+2022-01-12 00:55:45,205 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.15.2', port=59898, flowInfo=0, scopeID=0)
+2022-01-12 01:00:58,749 - sydent.validators.emailvalidator - 72 - INFO - Attempting to mail code Fn4EX4s5SN323LqLma6nndARUHJevub6 (nextLink: None) to jobzhao.ai@yunify.com
+2022-01-12 01:00:58,750 - sydent.util.emailutils - 94 - INFO - Sending mail to jobzhao.ai@yunify.com with mail server: smtp.163.com
+2022-01-12 01:00:58,872 - twisted - 147 - INFO - "::ffff:192.168.15.2" - - [11/Jan/2022:17:00:58 +0000] "POST /_matrix/identity/api/v1/validate/email/requestToken HTTP/1.1" 200 20 "-" "Synapse/1.29.0 (b=ldap-login,29fe6a59a)"
+2022-01-12 01:01:56,515 - sydent.validators.common - 61 - INFO - Setting session 979491663 as validated
+2022-01-12 01:01:56,517 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:01:55 +0000] "GET /_matrix/identity/api/v1/validate/email/submitToken?token=Fn4EX4s5SN323LqLma6nndARUHJevub6&client_secret=my5dX8D0YoHD3OO1qSdKNiPGlStxMRWW&sid=979491663 HTTP/1.1" 200 183 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+2022-01-12 01:01:58,872 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.15.2', port=60020, flowInfo=0, scopeID=0)
+2022-01-12 01:02:52,435 - twisted - 147 - INFO - "::ffff:192.168.15.2" - - [11/Jan/2022:17:02:51 +0000] "GET /_matrix/identity/api/v1/3pid/getValidated3pid?sid=979491663&client_secret=my5dX8D0YoHD3OO1qSdKNiPGlStxMRWW HTTP/1.1" 200 86 "-" "Synapse/1.29.0 (b=ldap-login,29fe6a59a)"
+2022-01-12 01:02:56,518 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=57066, flowInfo=0, scopeID=0)
+2022-01-12 01:02:56,523 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=57067, flowInfo=0, scopeID=0)
+2022-01-12 01:03:52,435 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.15.2', port=60048, flowInfo=0, scopeID=0)
+2022-01-12 01:17:41,911 - sydent.validators.emailvalidator - 72 - INFO - Attempting to mail code HqBWPjtyVn5o4n80CjPgMqpgKo6jEGkC (nextLink: None) to jobzhao.ai@yunify.com
+2022-01-12 01:17:41,911 - sydent.util.emailutils - 94 - INFO - Sending mail to jobzhao.ai@yunify.com with mail server: smtp.163.com
+2022-01-12 01:17:42,548 - twisted - 147 - INFO - "::ffff:192.168.15.2" - - [11/Jan/2022:17:17:41 +0000] "POST /_matrix/identity/api/v1/validate/email/requestToken HTTP/1.1" 200 20 "-" "Synapse/1.29.0 (b=ldap-login,29fe6a59a)"
+2022-01-12 01:18:28,201 - sydent.validators.common - 61 - INFO - Setting session 109797487 as validated
+2022-01-12 01:18:28,203 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:18:27 +0000] "GET /_matrix/identity/api/v1/validate/email/submitToken?token=HqBWPjtyVn5o4n80CjPgMqpgKo6jEGkC&client_secret=ZH3uWCjY0IvSxjXqyTS4JGODMadmqxjr&sid=109797487 HTTP/1.1" 200 183 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+2022-01-12 01:18:42,550 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.15.2', port=60366, flowInfo=0, scopeID=0)
+2022-01-12 01:19:08,686 - twisted - 147 - INFO - "::ffff:192.168.15.2" - - [11/Jan/2022:17:19:07 +0000] "GET /_matrix/identity/api/v1/3pid/getValidated3pid?sid=109797487&client_secret=ZH3uWCjY0IvSxjXqyTS4JGODMadmqxjr HTTP/1.1" 200 86 "-" "Synapse/1.29.0 (b=ldap-login,29fe6a59a)"
+2022-01-12 01:19:28,204 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=53476, flowInfo=0, scopeID=0)
+2022-01-12 01:19:28,207 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=53477, flowInfo=0, scopeID=0)
+2022-01-12 01:20:08,687 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.15.2', port=60400, flowInfo=0, scopeID=0)
+2022-01-12 01:21:34,001 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:21:33 +0000] "OPTIONS /_matrix/identity/v2/account/register HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:21:34,062 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:21:34,062 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:21:34,063 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc5886e5310>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886ded00>)
+2022-01-12 01:21:34,119 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:21:34,119 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:21:34,120 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b670>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc58870ae50>)
+2022-01-12 01:22:34,067 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:22:34,067 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:22:33 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:22:34,067 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc5886e5310>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886ded00>)
+2022-01-12 01:22:34,123 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:22:34,123 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:22:33 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:22:34,124 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b670>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc58870ae50>)
+2022-01-12 01:23:34,068 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=50040, flowInfo=0, scopeID=0)
+2022-01-12 01:23:34,124 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=62388, flowInfo=0, scopeID=0)
+2022-01-12 01:24:39,390 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:24:39 +0000] "OPTIONS /_matrix/identity/v2/account/register HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:24:39,405 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:24:39 +0000] "OPTIONS /_matrix/identity/v2/account/register HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:24:39,424 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:24:39,424 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:24:39,425 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb01f0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eabdf0>)
+2022-01-12 01:24:39,459 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:24:39,460 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:24:39,461 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb80d0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb5dc0>)
+2022-01-12 01:25:39,429 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:25:39,430 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:25:39 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:25:39,430 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb01f0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eabdf0>)
+2022-01-12 01:25:39,465 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:25:39,465 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:25:39 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:25:39,465 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb80d0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb5dc0>)
+2022-01-12 01:25:45,408 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:25:45 +0000] "OPTIONS /_matrix/identity/v2/account/register HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:25:45,452 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:25:45,452 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:25:45,453 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b3a0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886de3d0>)
+2022-01-12 01:25:45,547 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:25:45,548 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:25:45,548 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc5886e5e50>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb1520>)
+2022-01-12 01:26:45,456 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:26:45,457 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:26:45 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:26:45,457 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b3a0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886de3d0>)
+2022-01-12 01:26:45,551 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:26:45,551 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:26:45 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:26:45,552 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc5886e5e50>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb1520>)
+2022-01-12 01:27:45,458 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=49335, flowInfo=0, scopeID=0)
+2022-01-12 01:27:45,552 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=51750, flowInfo=0, scopeID=0)
+2022-01-12 01:31:06,189 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:31:05 +0000] "OPTIONS /_matrix/identity/v2/account/register HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:31:06,280 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:31:06,280 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:31:06,281 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b0d0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886f2bb0>)
+2022-01-12 01:31:06,442 - sydent.http.matrixfederationagent - 362 - INFO - Endpoint created with b'192.168.15.2':8448
+2022-01-12 01:31:06,442 - sydent.http.matrixfederationagent - 365 - INFO - Connecting to 192.168.15.2:8448
+2022-01-12 01:31:06,443 - twisted - 147 - INFO - Starting factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb0f70>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb1d30>)
+2022-01-12 01:32:06,285 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:32:06,285 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:32:05 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:32:06,285 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc58870b0d0>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc5886f2bb0>)
+2022-01-12 01:32:06,445 - sydent.http.servlets - 190 - ERROR - Request processing failed: <twisted.python.failure.Failure twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]>, Traceback (most recent call last):
+--- <exception caught here> ---
+  File "/home/sydent/sydent/http/servlets/registerservlet.py", line 50, in render_POST
+    result = yield self.client.get_json(
+  File "/home/sydent/sydent/http/httpclient.py", line 48, in get_json
+    response = yield self.agent.request(
+  File "/home/sydent/sydent/http/matrixfederationagent.py", line 172, in request
+    res = yield agent.request(method, uri, headers, bodyProducer)
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion: Connection lost.>]
+
+2022-01-12 01:32:06,446 - twisted - 147 - INFO - "::ffff:192.168.255.254" - - [11/Jan/2022:17:32:05 +0000] "POST /_matrix/identity/v2/account/register HTTP/1.1" 500 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Element/1.9.8 Chrome/91.0.4472.164 Electron/13.5.2 Safari/537.36"
+2022-01-12 01:32:06,446 - twisted - 147 - INFO - Stopping factory _HTTP11ClientFactory(<function HTTPConnectionPool._newConnection.<locals>.quiescentCallback at 0x7fc587eb0f70>, <twisted.internet.endpoints._WrapperEndpoint object at 0x7fc587eb1d30>)
+2022-01-12 01:33:06,287 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=60777, flowInfo=0, scopeID=0)
+2022-01-12 01:33:06,447 - twisted - 147 - INFO - Timing out client: IPv6Address(type='TCP', host='::ffff:192.168.255.254', port=58569, flowInfo=0, scopeID=0)

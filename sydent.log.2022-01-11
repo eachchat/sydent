@@ -1,0 +1,32 @@
+2022-01-11 15:26:10,847 - __main__ - 192 - INFO - Starting Sydent server
+2022-01-11 15:26:10,847 - sydent.db.sqlitedb - 29 - INFO - Using DB file sydent.db
+2022-01-11 15:26:10,848 - sydent.db.sqlitedb - 43 - INFO - Running schema files...
+2022-01-11 15:26:10,848 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/threepid_associations.sql
+2022-01-11 15:26:10,855 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/threepid_validation.sql
+2022-01-11 15:26:10,858 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/invite_tokens.sql
+2022-01-11 15:26:10,866 - sydent.db.sqlitedb - 54 - INFO - Importing /home/sydent/sydent/db/peers.sql
+2022-01-11 15:26:10,883 - sydent.db.sqlitedb - 74 - INFO - Migrating schema from v0 to v1
+2022-01-11 15:26:10,911 - sydent.db.sqlitedb - 134 - INFO - v0 -> v1 schema migration complete
+2022-01-11 15:26:10,916 - sydent.db.sqlitedb - 138 - INFO - Migrating schema from v1 to v2
+2022-01-11 15:26:10,925 - sydent.db.sqlitedb - 142 - INFO - v1 -> v2 schema migration complete
+2022-01-11 15:26:10,965 - sydent.db.sqlitedb - 172 - INFO - v2 -> v3 schema migration complete
+2022-01-11 15:26:11,018 - sydent.db.sqlitedb - 182 - INFO - v3 -> v4 schema migration complete
+2022-01-11 15:26:11,042 - sydent.db.sqlitedb - 191 - INFO - v4 -> v5 schema migration complete
+2022-01-11 15:26:11,057 - sydent.http.httpcommon - 33 - WARNING - No HTTPS private key / cert found: not starting replication server or doing replication pushes
+2022-01-11 15:26:11,058 - sydent.http.httpserver - 139 - INFO - Starting Client API HTTP server on :::8090
+2022-01-11 15:26:11,059 - twisted - 147 - INFO - Site starting on 8090
+2022-01-11 15:26:11,060 - twisted - 147 - INFO - Starting factory <twisted.web.server.Site object at 0x7fc8cc414c10>
+2022-01-11 15:26:15,518 - twisted - 147 - INFO - Received SIGINT, shutting down.
+2022-01-11 15:26:15,518 - twisted - 147 - INFO - (TCP Port 8090 Closed)
+2022-01-11 15:26:15,518 - twisted - 147 - INFO - Stopping factory <twisted.web.server.Site object at 0x7fc8cc414c10>
+2022-01-11 15:26:15,519 - twisted - 147 - INFO - Main loop terminated.
+2022-01-11 15:50:26,719 - __main__ - 169 - INFO - Starting Sydent server
+2022-01-11 15:50:26,719 - sydent.db.sqlitedb - 29 - INFO - Using DB file sydent.db
+2022-01-11 15:50:26,722 - sydent.http.httpcommon - 33 - WARNING - No HTTPS private key / cert found: not starting replication server or doing replication pushes
+2022-01-11 15:50:26,722 - sydent.http.httpserver - 139 - INFO - Starting Client API HTTP server on :::8090
+2022-01-11 15:50:26,723 - twisted - 147 - INFO - Site starting on 8090
+2022-01-11 15:50:26,724 - twisted - 147 - INFO - Starting factory <twisted.web.server.Site object at 0x7fe59a70ad00>
+2022-01-11 15:50:35,263 - twisted - 147 - INFO - Received SIGINT, shutting down.
+2022-01-11 15:50:35,263 - twisted - 147 - INFO - (TCP Port 8090 Closed)
+2022-01-11 15:50:35,264 - twisted - 147 - INFO - Stopping factory <twisted.web.server.Site object at 0x7fe59a70ad00>
+2022-01-11 15:50:35,264 - twisted - 147 - INFO - Main loop terminated.
