@@ -201,6 +201,7 @@ class Verifier:
         :return: The origin of the server whose signature was validated
         """
         auth_headers = request.requestHeaders.getRawHeaders("Authorization")
+        logger.info('auth_headers:%s ---------------' % (auth_headers, ))
         if not auth_headers:
             raise NoAuthenticationError("Missing Authorization headers")
 
