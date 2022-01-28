@@ -201,7 +201,6 @@ class Verifier:
         :return: The origin of the server whose signature was validated
         """
         auth_headers = request.requestHeaders.getRawHeaders("Authorization")
-        logger.info('auth_headers:%s ---------------' % (auth_headers, ))
         if not auth_headers:
             raise NoAuthenticationError("Missing Authorization headers")
 
@@ -228,6 +227,8 @@ class Verifier:
             origin=origin,
             content=content,
         )
+        
+        
         await self.verifyServerSignedJson(json_request, [origin])
 
         logger.info("Verified request from HS %s", origin)
