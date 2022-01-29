@@ -1,3 +1,16 @@
+Date: %(date)s
+From: %(from)s
+To: %(to)s
+Message-ID: %(messageid)s
+Subject: Confirm your email address for Element
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="%(multipart_boundary)s"
+
+--%(multipart_boundary)s
+Content-Type: text/html; charset=UTF-8
+Content-Disposition: inline
+
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -126,3 +139,4 @@
 <div style="text-align: center; color: #7A7A7A; font-size: 12px; font-family: PingFang SC; margin-top: 32px;">此为系统邮件，请勿回复。</div>
 </body>
 </html>
+--%(multipart_boundary)s--
