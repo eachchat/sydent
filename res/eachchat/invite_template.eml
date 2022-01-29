@@ -106,7 +106,7 @@ Content-Disposition: inline
             <td colspan=2><p style='line-height: 20px; '>
                 尊敬的%(sender_display_name)s：您好！<br><br>
                 %(bracketed_verified_sender)在亿洽上邀请您加入聊天。<br><br>
-                <a href="%(web_client_location)s/#/room/%(room_id_forurl)s?email=%(to_forurl)s&signurl=https%%3A%%2F%%2Fvector.im%%2F_matrix%%2Fidentity%%2Fapi%%2Fv1%%2Fsign-ed25519%%3Ftoken%%3D%(token)s%%26private_key%%3D%(ephemeral_private_key)s&room_name=%(room_name_forurl)s&room_avatar_url=%(room_avatar_url_forurl)s&inviter_name=%(sender_display_name_forurl)s&guest_access_token=%(guest_access_token_forurl)s&guest_user_id=%(guest_user_id_forurl)s&room_type=%(room_type_forurl)s">加入聊天<a/><br><br>
+                <a href="%(web_client_location)s/#/room/%(room_id_forurl)s?email=%(to_forurl)s&signurl=https%%3A%%2F%%2Fvector.im%%2F_matrix%%2Fidentity%%2Fapi%%2Fv1%%2Fsign-ed25519%%3Ftoken%%3D%(token)s%%26private_key%%3D%(ephemeral_private_key)s&room_name=%(room_name_forurl)s&room_avatar_url=%(room_avatar_url_forurl)s&inviter_name=%(sender_display_name_forurl)s&guest_access_token=%(guest_access_token_forurl)s&guest_user_id=%(guest_user_id_forurl)s&room_type=%(room_type_forurl)s">加入聊天</a><br><br>
             </p>
             </td>
             <td width=58></td>

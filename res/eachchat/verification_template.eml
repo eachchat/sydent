@@ -106,10 +106,7 @@ Content-Disposition: inline
             <td colspan=2><p style='line-height: 20px; '>
                 您好！<br><br>
                 我们已经收到您使用该电子邮箱在亿洽进行身份认证的请求，如果是您提出此请求，您可以点击以下链接来完成您的电子邮箱验证：<br><br>
-                <a href="%(link)s">完成email验证<a/><br><br>
-                或者把这个链接复制到您的浏览器中：<br><br>
-
-                如果您的客户端需要一个验证码，请复制：<br><br>
+                <a href="%(link)s">完成email验证</a><br><br>
                 如果您没有提交验证请求，请忽略此邮件。
             </p>
             </td>
