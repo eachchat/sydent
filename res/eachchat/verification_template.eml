@@ -2,7 +2,7 @@ Date: %(date)s
 From: %(from)s
 To: %(to)s
 Message-ID: %(messageid)s
-Subject: Confirm your email address for Element
+Subject: 亿洽邮箱验证
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
 	boundary="%(multipart_boundary)s"
@@ -80,7 +80,7 @@ Content-Disposition: inline
         <tr>
             <td width=58></td>
             <td width=128 height=45>
-                <img src='{logoUrl}' width=128>
+                <img src='static/images/logo_word_big.png' width=128>
             </td>
             <td></td>
             <td width=58></td>
