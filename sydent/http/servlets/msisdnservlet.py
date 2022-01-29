@@ -140,7 +140,7 @@ class MsisdnValidateCodeServlet(Resource):
         args = get_args(request, ("token", "sid", "client_secret"))
         resp = self.do_validate_request(request)
         if "success" in resp and resp["success"]:
-            msg = "Verification successful! Please return to your Matrix client to continue."
+            msg = "验证成功！请返回您的客户端继续。"
             if "next_link" in args:
                 next_link = args["next_link"]
                 request.setResponseCode(302)
@@ -148,7 +148,7 @@ class MsisdnValidateCodeServlet(Resource):
         else:
             request.setResponseCode(400)
             msg = (
-                "Verification failed: you may need to request another verification text"
+                "验证失败！您可能需要一个新的短信验证码。"
             )
 
         brand = self.sydent.brand_from_request(request)

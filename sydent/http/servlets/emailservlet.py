@@ -131,14 +131,14 @@ class EmailValidateCodeServlet(Resource):
         except Exception:
             pass
         if resp and "success" in resp and resp["success"]:
-            msg = "Verification successful! Please return to your Matrix client to continue."
+            msg = "验证成功！请返回您的客户端继续。"
             if "nextLink" in args:
                 next_link = args["nextLink"]
                 if not next_link.startswith("file:///"):
                     request.setResponseCode(302)
                     request.setHeader("Location", next_link)
         else:
-            msg = "Verification failed: you may need to request another verification email"
+            msg = "验证失败！您可能需要另一封验证邮件。"
 
         brand = self.sydent.brand_from_request(request)
 

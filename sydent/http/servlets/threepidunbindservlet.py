@@ -72,6 +72,7 @@ class ThreePidUnbindServlet(Resource):
                 request.finish()
                 return
 
+            logger.info('---------body:%s----' % (body, ))
             missing = [k for k in ("threepid", "mxid") if k not in body]
             if len(missing) > 0:
                 request.setResponseCode(HTTPStatus.BAD_REQUEST)
@@ -177,6 +178,7 @@ class ThreePidUnbindServlet(Resource):
                         )
                     )
                 except SignatureVerifyException as ex:
+                    logger.error('---------error1:%s----' % (ex, ))
                     request.setResponseCode(HTTPStatus.UNAUTHORIZED)
                     request.write(
                         dict_to_json_bytes({"errcode": "M_FORBIDDEN", "error": str(ex)})
@@ -184,6 +186,7 @@ class ThreePidUnbindServlet(Resource):
                     request.finish()
                     return
                 except NoAuthenticationError as ex:
+                    logger.error('---------error2:%s----' % (ex, ))
                     request.setResponseCode(HTTPStatus.UNAUTHORIZED)
                     request.write(
                         dict_to_json_bytes({"errcode": "M_FORBIDDEN", "error": str(ex)})
