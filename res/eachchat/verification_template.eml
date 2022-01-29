@@ -1,170 +1,128 @@
-Date: %(date)s
-From: %(from)s
-To: %(to)s
-Message-ID: %(messageid)s
-Subject: Confirm your email address for Element
-MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="%(multipart_boundary)s"
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #table_wrap > table {
+            font-size: 14px;
+            font-family: PingFang SC;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px #000;
+        }
 
---%(multipart_boundary)s
-Content-Type: text/plain; charset=UTF-8
-Content-Disposition: inline
+        table thead tr,table tbody tr {
+            height: 20px;
+            line-height: 20px;
+            /*background-color: pink;*/
+        }
+        table tr th:first-child,table tr td:first-child {/*设置table左边边框*/
+            border-left: 1px solid #dddddd;
+        }
+        table tr th:last-child,table tr td:last-child {/*设置table右边边框*/
+            border-right: 1px solid #dddddd;
+        }
+        table tr:last-child td{/*设置table表格底部边框*/
+            border-bottom: 1px solid #dddddd;
+        }
+        table tr th {
+            background: #ffffff;
+            border-top: 1px solid #dddddd;
+        }
+        table tr:first-child th:first-child {
+            border-top-left-radius: 12px;
+        }
 
-Hello there!
+        table tr:first-child th:last-child {
+            border-top-right-radius: 12px;
+        }
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
 
-You have asked us to register this email address with element.io - the open source,
-distributed and secure shared workspace for the web that's built on Matrix.
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
 
-If it was really you who made this request, you can click on the following link to
-complete the verification of your email address:
+        b {
+            color: #2E2E2E;
+            font-size: 14px;
+            font-family: PingFang SC;
+            character: 0px
+        }
+    </style>
+</head>
+<body>
+<div id="table_wrap">
+    <table class="table" width="750" cellspacing="0" cellpadding="0">
+        <thead class="table_head">
+        <tr>
+            <th width=58 style="height: 50px;"></th>
+            <th colspan=2></th>
+            <th width=58></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width=58></td>
+            <td width=128 height=45>
+                <img src='{logoUrl}' width=128>
+            </td>
+            <td></td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2 style="height: 2px;"><hr style="border: 1px solid #00da5f;"></td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td colspan=4 style="height: 32px;"></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2><b style="font-size: 22px;">亿洽邮箱验证！</b></td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td colspan=4 style="height: 16px;"></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2><p style='line-height: 20px; '>
+                您好！<br><br>
+                我们已经收到您使用该电子邮箱在亿洽进行身份认证的请求，如果是您提出此请求，您可以点击以下链接来完成您的电子邮箱验证：<br><br>
+                <a href="%(link)s">完成email验证<a/><br><br>
+                或者把这个链接复制到您的浏览器中：<br><br>
 
-%(link)s
-
-Please note that you will need to use Chrome, Firefox or Safari on the web, or
-iOS or Android on mobile.
-
-If you didn't make this request, you can safely disregard this email.
-
-Thanks!
-
-Element
-
-
-About Element:
-
-Break through - Element allows teams to communicate across a wide range of collaboration
-apps. If some team members use Element while others use IRC, Slack or Gitter, Element will
-allow these team members to seamlessly work together. Element offers the richest
-network of communication bridges.
-
-Own Your Own Data - No one should control your communication and data but you. Element
-lets you run your own server, and provides users and teams with the most advanced
-crypto ratchet technology available today for a decentralized secure Internet.
-
-Open Source - Element is entirely open source: all the code is published on GitHub
-(Apache License) for anyone to see and extend. This means teams can customize or
-contribute to the code and everyone can benefit from the speed of community innovation.
-
-Made on Matrix - Element is built on top of Matrix. Matrix is an open network for secure,
-decentralized communication delivering a community of users, bridged networks,
-integrated bots and applications plus full end-to-end encryption. To learn more about
-Matrix visit https://matrix.org.
-
---%(multipart_boundary)s
-Content-Type: text/html; charset=UTF-8
-Content-Disposition: inline
-
-<!doctype html>
-<html lang="en">
-    <head>
-        <style type="text/css">
-body {
-    margin: 0px;
-}
-
-pre, code {
-    word-break: break-word;
-    white-space: pre-wrap;
-}
-
-#page {
-    font-family: 'Open Sans', Helvetica, Arial, Sans-Serif;
-    font-color: #454545;
-    font-size: 12pt;
-    width: 100%%;
-    padding: 20px;
-}
-
-#inner {
-    width: 640px;
-}
-
-.header {
-    width: 100%%;
-    height: 87px;
-    color: #454545;
-    border-bottom: 4px solid #e5e5e5;
-}
-
-.logo {
-    text-align: right;
-    margin-left: 20px;
-}
-
-.header {
-    border-bottom: 4px solid #e4f7ed ! important;
-}
-
-
-.notif_link a, .footer a {
-    color: #76CFA6 ! important;
-}
-        </style>
-    </head>
-    <body>
-        <table id="page">
-            <tr>
-                <td> </td>
-                <td id="inner">
-                    <table class="header">
-                        <tr>
-                            <td>
-                            </td>
-                            <td class="logo">
-                                    <img src="https://static.element.io/images/email-logo.png" width="64" height="64" alt="Element"/>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <p>Hello there!</p>
-
-                    <p>You have asked us to register this email address with element.io - the open source,
-                    distributed and secure shared workspace for the web that's built on Matrix.</p>
-
-                    <p>If it was really you who made this request, you can click on the following link to
-                    complete the verification of your email address:</p>
-
-                    <p><a href="%(link)s">Complete email verification</a></p>
-
-                    <p>Please note that Element requires
-                    <a href="https://www.google.com/chrome">Chrome</a>,
-                    <a href="https://www.getfirefox.com">Firefox</a> or
-                    <a href="https://www.apple.com/safari">Safari</a> on the web,
-                    or iOS or Android on mobile.</p>
-
-                    <p>If you didn't make this request, you can safely disregard this email.</p>
-
-                    <p>Thanks!</p>
-
-                    <p>Element</p>
-
-                    <br>
-                    <p>About Element:</p>
-
-                    <p><em>Break through</em> - Element allows teams to communicate across a wide range of collaboration
-                    apps. If some team members use Element while others use IRC, Slack or Gitter, Element will
-                    allow these team members to seamlessly work together. Element offers the richest
-                    network of communication bridges.</p>
-
-                    <p><em>Own Your Own Data</em> - No one should control your communication and data but you. Element
-                    lets you run your own server, and provides users and teams with the most advanced
-                    crypto ratchet technology available today for a decentralized secure Internet.</p>
-
-                    <p><em>Open Source</em> - Element is entirely open source: all the code is published on GitHub
-                    (Apache License) for anyone to see and extend. This means teams can customize or
-                    contribute to the code and everyone can benefit from the speed of community innovation.</p>
-
-                    <p><em>Made on Matrix</em> - Element is built on top of Matrix. Matrix is an open network for secure,
-                    decentralized communication delivering a community of users, bridged networks,
-                    integrated bots and applications plus full end-to-end encryption. To learn more about
-                    Matrix visit https://matrix.org.</p>
-
-                </td>
-                <td> </td>
-            </tr>
-        </table>
-    </body>
+                如果您的客户端需要一个验证码，请复制：<br><br>
+                如果您没有提交验证请求，请忽略此邮件。
+            </p>
+            </td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2 style="height: 32px;"></td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2>
+                此致<br>
+                <b>亿洽团队</b>
+            </td>
+            <td width=58></td>
+        </tr>
+        <tr>
+            <td width=58></td>
+            <td colspan=2 style="height: 56px;"></td>
+            <td width=58></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="text-align: center; color: #7A7A7A; font-size: 12px; font-family: PingFang SC; margin-top: 32px;">此为系统邮件，请勿回复。</div>
+</body>
 </html>
-
---%(multipart_boundary)s--
