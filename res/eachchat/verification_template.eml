@@ -1,5 +1,5 @@
 Date: %(date)s
-From: =?utf-8?=%(from)s
+From: %(from)s
 To: %(to)s
 Message-ID: %(messageid)s
 Subject: 亿洽邮箱验证
