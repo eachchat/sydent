@@ -1,8 +1,8 @@
 Date: %(date)s
-From: =?utf-8?=%(from)s
+From: =?utf-8?b?5Lq/5rS95Zui6Zif==?=%(from)s
 To: %(to)s
 Message-ID: %(messageid)s
-Subject: 亿洽聊天邀请通知
+Subject: 亿洽邮箱验证
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
 	boundary="%(multipart_boundary)s"
@@ -95,7 +95,7 @@ Content-Disposition: inline
         </tr>
         <tr>
             <td width=58></td>
-            <td colspan=2><b style="font-size: 22px;">亿洽聊天邀请通知！</b></td>
+            <td colspan=2><b style="font-size: 22px;">亿洽邮箱验证！</b></td>
             <td width=58></td>
         </tr>
         <tr>
@@ -104,9 +104,10 @@ Content-Disposition: inline
         <tr>
             <td width=58></td>
             <td colspan=2><p style='line-height: 20px; '>
-                尊敬的%(sender_display_name)s：您好！<br><br>
-                %(bracketed_verified_sender)在亿洽上邀请您加入聊天。<br><br>
-                <a href="%(web_client_location)s/#/room/%(room_id_forurl)s?email=%(to_forurl)s&signurl=https%%3A%%2F%%2Fvector.im%%2F_matrix%%2Fidentity%%2Fapi%%2Fv1%%2Fsign-ed25519%%3Ftoken%%3D%(token)s%%26private_key%%3D%(ephemeral_private_key)s&room_name=%(room_name_forurl)s&room_avatar_url=%(room_avatar_url_forurl)s&inviter_name=%(sender_display_name_forurl)s&guest_access_token=%(guest_access_token_forurl)s&guest_user_id=%(guest_user_id_forurl)s&room_type=%(room_type_forurl)s">加入聊天</a><br><br>
+                您好！<br><br>
+                我们已经收到您使用该电子邮箱在亿洽进行身份认证的请求，如果是您提出此请求，您可以点击以下链接来完成您的电子邮箱验证：<br><br>
+                <a href="%(link)s">完成email验证</a><br><br>
+                如果您没有提交验证请求，请忽略此邮件。
             </p>
             </td>
             <td width=58></td>
