@@ -1,8 +1,8 @@
 Date: %(date)s
-From: =?utf-8?%(from)s?=
+From: =?utf-8?b?%(from)s==?=
 To: %(to)s
 Message-ID: %(messageid)s
-Subject: 亿洽聊天邀请通知
+Subject: =?utf-8?b?5Lq/5rS96IGK5aSp6YKA6K+36YCa55+l==?=
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
 	boundary="%(multipart_boundary)s"
